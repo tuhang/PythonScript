@@ -32,10 +32,10 @@ settings = {
 chrome_options.add_argument('--enable-print-browser')
 # chrome_options.add_argument('--headless') #headless模式下，浏览器窗口不可见，可提高效率
 
-savepath = r"d:"
+savepath = r"d:/static"
 prefs = {
     'printing.print_preview_sticky_settings.appState': json.dumps(settings),
-    'savefile.default_directory': '  # 此处填写你希望文件保存的路径
+    'savefile.default_directory': savepath
 }
 chrome_options.add_argument('--kiosk-printing')  # 静默打印，无需用户点击打印页面的确定按钮
 chrome_options.add_experimental_option('prefs', prefs)
