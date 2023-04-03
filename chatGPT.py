@@ -48,10 +48,9 @@ for file_name in os.listdir(html_folder_path):
         file_path = os.path.join(html_folder_path, file_name)
         driver.get(f'file:///{file_path}')
 
+        time.sleep(10)
         # 等待页面加载完成
-        driver.execute_script('document.querySelector("#download\\.default_directory").value = "{0}";'.format(download_folder_path))
         driver.execute_script('window.print();')
-        time.sleep(60)
         driver.execute_script('window.close();')
 
 # 关闭浏览器
