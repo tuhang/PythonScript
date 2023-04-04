@@ -31,10 +31,15 @@ prefs = {
     'download.default_directory': download_folder_path,
     'printing.print_preview_sticky_settings.appState': json.dumps(settings),
 }
-
 chrome_options.add_argument('--enable-print-browser')
 # 静默打印，无需用户点击打印页面的确定按钮
 chrome_options.add_argument('--kiosk-printing')
+
+# 不弹窗
+# chrome_options.add_argument('--headless')
+# chrome_options.add_argument('--disable-gpu')
+
+
 chrome_options.add_experimental_option('prefs', prefs)
 
 # 定义处理单个文件的函数
@@ -42,7 +47,6 @@ def process_file(file_path):
     driver = webdriver.Chrome(options=chrome_options)
     driver.get(f'file:///{file_path}')
     time.sleep(10)
-    # 等待页面加载完成
     driver.execute_script('window.print();')
     driver.execute_script('window.close();')
     driver.quit()
